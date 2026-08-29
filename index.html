@@ -67,15 +67,37 @@
             text-align: center;
             margin-bottom: 0;
         }
-        .map-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #bc4749; /* Accent color for links */
-            text-decoration: none;
-            font-weight: bold;
+        .map-outer-wrapper {
+            position: relative;
+            margin-top: 55px; /* Creates room above the iframe for the pointer */
         }
-        .map-link:hover {
-            text-decoration: underline;
+        .map-pointer {
+            position: absolute;
+            top: -45px;
+            right: 10px; /* Aligns with the full screen icon */
+            background-color: #bc4749;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.05em;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: bounce 2s infinite;
+            z-index: 10;
+        }
+        .map-pointer::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 15px;
+            border-width: 8px 8px 0;
+            border-style: solid;
+            border-color: #bc4749 transparent transparent transparent;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
         .map-wrapper {
             position: relative;
@@ -83,7 +105,6 @@
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            margin-top: 15px;
             background-color: #f1f1f1;
         }
         .map-wrapper iframe {
@@ -156,38 +177,40 @@
                 <img src="family.jpg" alt="A photo of us waiting for you" class="family-photo">
             </div>
             <p class="invitation-text">
-                "Hi Mom & Dad! Consider this your official invitation to Puerto Escondido. I really appreciated your visit to Mexico City while I lived there and I would love to host you guys again in my sleepy beach town. Come on down and we'll have a fun time eating fresh tuna and sipping on some mocktails. If you guys want more of a cultural experience, maybe we could visit the charming town of Oaxaca too together which is only a few hours away. There's lots of options!"
+                "Hi Mom & Dad! Consider this your official invitation to Puerto Escondido. I really appreciated your visit to Mexico City while I lived there and I would love to host you guys again in my sleepy beach town. Come on down and we'll have a fun time eating fresh tuna and sipping on mocktails. If you guys want more of a cultural experience, maybe we could visit the charming town of Oaxaca too together which is only a few hours away. There's lots of options!"
             </p>
         </div>
         <!-- PERSONAL INVITATION CARD END -->
         
         <div class="section-card">
-            <h2>📍 The Neighborhood Map</h2>
+            <h2>The Neighborhood Map</h2>
             <p>I've created a custom map showing exactly where I live (the red house icon) and where each hotel is located (the blue hotel icons), so you can visualize the neighborhood!</p>
-            <a href="https://maps.app.goo.gl/qhgBZR7bfMy8xXUj6" target="_blank" class="map-link">🔗 Click here to open my exact location in Google Maps</a>
             
-            <div class="map-wrapper">
-                <!-- IMPORTANT: Paste your custom My Maps embed <iframe> below -->
-                <iframe src="https://www.google.com/maps/d/embed?mid=1FhxDsqSCpvwOJV7pTlN-2DLc1kN2BtQ&ehbc=2E312F" width="640" height="480"></iframe>
+            <div class="map-outer-wrapper">
+                <div class="map-pointer">Click here for a larger map!</div>
+                <div class="map-wrapper">
+                    <!-- IMPORTANT: Paste your custom My Maps embed <iframe> below -->
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1FhxDsqSCpvwOJV7pTlN-2DLc1kN2BtQ&ehbc=2E312F" width="640" height="480"></iframe>
+                </div>
             </div>
         </div>
 
         <div class="section-card">
-            <h2>🏨 Hotel Suggestions</h2>
-            <p>Here are a few hotel ideas. I basically chose the nicest hotels nearby me I could find - most of them in the nearby Tamarindos neighborhood which is very popular for visitors. This isn't really an upscale destination, but more and more we have some pretty great options to stay at</p>
-
-            <div class="hotel">
-                <h3>Casa Leah</h3>
-                <span class="tag">Tamarindos Neighborhood</span><br>
-                <a href="https://maps.google.com/?cid=7558296431567445679" target="_blank" class="hotel-map-link">📍 View on Google Maps</a>
-                <p>A wonderful, comfortable option located conveniently nearby. It's peaceful and has a beautiful garden atmosphere.</p>
-            </div>
+            <h2>Hotel Suggestions</h2>
+            <p>Here are a few hotel ideas. I basically chose the nicest hotels nearby me I could find - most of them in the nearby Tamarindos neighborhood which is very popular for visitors. Tamarindos is also great because it is close to everything but also quiet and you won't hear the nightlife this town is famous for. Puerto isn't really an upscale destination, but these days we have some pretty great options to stay at.</p>
 
             <div class="hotel">
                 <h3>Casa Joseph Zicatela</h3>
                 <span class="tag">Tamarindos Neighborhood</span> <span class="tag">Upscale Beachfront</span><br>
                 <a href="https://maps.google.com/?cid=5975858573767861807" target="_blank" class="hotel-map-link">📍 View on Google Maps</a>
                 <p>A stunning, upscale property right on the beach. It offers fantastic amenities and a very relaxing, premium environment.</p>
+            </div>
+
+            <div class="hotel">
+                <h3>Casa Leah</h3>
+                <span class="tag">Tamarindos Neighborhood</span><br>
+                <a href="https://maps.google.com/?cid=7558296431567445679" target="_blank" class="hotel-map-link">📍 View on Google Maps</a>
+                <p>A wonderful, comfortable option located conveniently nearby. It's peaceful and has a beautiful garden atmosphere.</p>
             </div>
             
             <div class="hotel">
@@ -199,15 +222,15 @@
             
             <div class="hotel">
                 <h3>Casona Sforza</h3>
-                <span class="tag">Architectural Masterpiece</span> <span class="tag">Further Out</span><br>
+                <span class="tag">Upscale Beachfront</span> <span class="tag">Architectural Masterpiece</span> <span class="tag">Further Out</span><br>
                 <a href="https://maps.google.com/?cid=16874407975975304480" target="_blank" class="hotel-map-link">📍 View on Google Maps</a>
-                <p>This is further from my house, and I think it's probably a little too remote if we're talking about convenience (that said, nothing is far away here in Puerto). But it's an awesome hotel I've been to that truly offers a luxury experience</p>
+                <p>This is further from my house, and I think it's probably a little too remote if we're talking about convenience (that said, nothing is far away here in Puerto). But it's an awesome hotel I've been to that truly offers a luxury experience and is right on the beach.</p>
             </div>
             
             <div class="hotel">
                 <h3>My Building (Where I Live!)</h3>
                 <span class="tag">Most Convenient</span><br>
-                <p>Also, the place I live is actually an accommodation, so you could stay in a separate room right inside my building. There is one really nice room on the top floor as well that is very spacious and has a large balcony! I'm not sure about their availability depending on exactly when you decide to come, but if you'd like to stay here, just let me know and I'll gladly reach out to check for you.</p>
+                <p>Also, the place I live is actually an accommodation, so you could stay in a separate room right inside my building. The rooms here are actually pretty nice. Nothing fancy, but nice. There is also one penthouse room on the top floor that is very spacious and has a large balcony! I'm not sure about their availability depending on exactly when you decide to come, but if you'd like to stay here, just let me know and I'll gladly reach out to check for you.</p>
             </div>
 
         </div>
